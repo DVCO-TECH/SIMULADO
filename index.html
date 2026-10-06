@@ -14,17 +14,14 @@
   --primary: #2563eb;
   --primary-hover: #1d4ed8;
   --accent: #f59e0b;
-  --accent-light: #fef3c7;
   --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
   --card-bg: rgba(255, 255, 255, 0.95);
   --card-glass: rgba(255, 255, 255, 0.08);
   --text-main: #0f172a;
-  --text-muted: #475569;
   --text-light: #f8fafc;
   --border-glass: rgba(255, 255, 255, 0.15);
   --radius-lg: 20px;
   --radius-md: 12px;
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
 }
 
@@ -32,7 +29,6 @@
   :root:not([data-theme="light"]) {
     --card-bg: #1e293b;
     --text-main: #f8fafc;
-    --text-muted: #94a3b8;
   }
 }
 
@@ -98,76 +94,6 @@ main {
   margin: 0;
   font-size: 1.15rem;
   color: #94a3b8;
-}
-
-/* Botão de Destaque Principal */
-.destaque {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  color: #fff;
-  border-radius: var(--radius-lg);
-  padding: 36px 24px;
-  text-align: center;
-  box-shadow: 0 12px 30px rgba(245, 158, 11, 0.35);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-  overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Efeito de Brilho Passeante (Shimmer) */
-.destaque::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
-  transform: rotate(30deg);
-  animation: shimmer 4s infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%) rotate(30deg); }
-  20%, 100% { transform: translateX(100%) rotate(30deg); }
-}
-
-.destaque:hover, .destaque:focus-visible {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(245, 158, 11, 0.5);
-}
-
-.destaque:active {
-  transform: translateY(-2px) scale(0.99);
-}
-
-.destaque .icone {
-  font-size: 3rem;
-  margin-bottom: 8px;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
-}
-
-.destaque .titulo {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(2rem, 6vw, 2.8rem);
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.destaque .sub {
-  margin-top: 6px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  opacity: 0.95;
-  background: rgba(0, 0, 0, 0.15);
-  padding: 6px 16px;
-  border-radius: 20px;
 }
 
 /* Seção de Anos / Séries */
@@ -303,7 +229,6 @@ footer {
   body { padding: 20px 12px; }
   main { gap: 20px; }
   .header-hero { padding: 28px 18px; }
-  .destaque { padding: 28px 18px; }
 }
 </style>
 </head>
@@ -314,12 +239,6 @@ footer {
     <h1>✏️ Hora de se preparar!</h1>
     <p>Acesse o material atualizado e treine para a prova do SARESP.</p>
   </header>
-
-  <a class="destaque ripple" href="https://drive.google.com/file/d/1Qg94OahtdV4qBL09VIX3MJuHvn9OQ91l/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-    <span class="icone" aria-hidden="true">📝</span>
-    <span class="titulo">SIMULADO SARESP</span>
-    <span class="sub">Clique para abrir o documento completo</span>
-  </a>
 
   <section class="anos" aria-label="Simulados por ano">
     <div class="ano">
