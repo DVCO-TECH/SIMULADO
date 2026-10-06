@@ -3,33 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Simulado SARESP</title>
-<!-- Fontes do Google: Plus Jakarta Sans e Outfit -->
+<title>Portal de Simulados SARESP</title>
+<!-- Google Fonts: Inter e Plus Jakarta Sans -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --accent: #f59e0b;
-  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
-  --card-bg: rgba(255, 255, 255, 0.95);
-  --card-glass: rgba(255, 255, 255, 0.08);
-  --text-main: #0f172a;
-  --text-light: #f8fafc;
-  --border-glass: rgba(255, 255, 255, 0.15);
-  --radius-lg: 20px;
+  --bg-app: #f8fafc;
+  --surface: #ffffff;
+  --surface-subtle: #f1f5f9;
+  --border: #e2e8f0;
+  --border-focus: #cbd5e1;
+  
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  
+  --brand-primary: #2563eb;
+  --brand-primary-hover: #1d4ed8;
+  --brand-light: #eff6ff;
+  
+  --accent-warm: #d97706;
+  --accent-warm-bg: #fffbe0;
+  
+  --radius-lg: 16px;
   --radius-md: 12px;
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --card-bg: #1e293b;
-    --text-main: #f8fafc;
-  }
+  --radius-sm: 8px;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 12px 20px -4px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
 }
 
 *, *::before, *::after {
@@ -39,262 +44,376 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  color: var(--text-main);
-  background: var(--bg-gradient);
-  background-attachment: fixed;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-app);
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
+  align-items: flex-start;
+  padding: 48px 20px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 main {
   width: 100%;
-  max-width: 880px;
+  max-width: 840px;
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
 
-/* Cabeçalho Hero */
-.header-hero {
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  border: 1px solid var(--border-glass);
+/* Cabeçalho Limpo / Institucional */
+.header-banner {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 40px 28px;
-  text-align: center;
+  padding: 36px 32px;
+  box-shadow: var(--shadow-sm);
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
 }
 
-.header-hero::before {
+.header-banner::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 60%);
-  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #2563eb 0%, #4f46e5 100%);
 }
 
-.header-hero h1 {
-  margin: 0 0 10px;
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
+.badge-portal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--brand-light);
+  color: var(--brand-primary);
+  font-size: 0.825rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.header-banner h1 {
+  margin: 0 0 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
   font-weight: 800;
-  color: #fff;
+  color: var(--text-primary);
   letter-spacing: -0.02em;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.header-hero p {
+.header-banner p {
   margin: 0;
-  font-size: 1.15rem;
-  color: #94a3b8;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
 }
 
-/* Seção de Anos / Séries */
-.anos {
+/* Grid das Séries */
+.anos-grid {
   display: grid;
   gap: 24px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
 }
 
-.ano {
-  background: var(--card-bg);
+.card-ano {
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.ano:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+.card-ano:hover {
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-md);
 }
 
-.ano h2 {
-  margin: 0 0 16px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.4rem;
+.card-ano-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--surface-subtle);
+}
+
+.card-ano-header h2 {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.25rem;
   font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tag-disciplinas {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  background: var(--surface-subtle);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+}
+
+/* Links dos Simulados */
+.simulado-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  margin-top: 10px;
+  text-decoration: none;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.simulado-link-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.simulado-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background-color: var(--brand-light);
+  color: var(--brand-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.simulado-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.simulado-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.simulado-sub {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+}
+
+.simulado-action {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--brand-primary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.simulado-link:hover {
+  background-color: var(--brand-light);
+  border-color: rgba(37, 99, 235, 0.3);
+  transform: translateY(-1px);
+}
+
+.simulado-link:hover .simulado-title {
+  color: var(--brand-primary);
+}
+
+/* Seção de Dicas */
+.dicas-container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.dicas-header {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.ano a {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 12px;
-  padding: 14px 18px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: #fff;
-  background: var(--primary);
-  border-radius: var(--radius-md);
-  transition: all 0.25s ease;
-  overflow: hidden;
-}
-
-.ano a::after {
-  content: '➔';
-  font-size: 1.1rem;
-  transition: transform 0.25s ease;
-}
-
-.ano a:hover, .ano a:focus-visible {
-  background: var(--primary-hover);
-  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
-}
-
-.ano a:hover::after {
-  transform: translateX(4px);
-}
-
-/* Seção de Dicas */
-.dicas {
+.dicas-grid {
   display: grid;
-  gap: 18px;
+  gap: 16px;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
-.dica {
-  background: var(--card-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-glass);
+.dica-card {
+  background-color: var(--surface-subtle);
   border-radius: var(--radius-md);
-  padding: 20px;
-  color: var(--text-light);
-  transition: background 0.3s ease;
+  padding: 16px 18px;
 }
 
-.dica:hover {
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.dica h2 {
-  margin: 0 0 8px;
-  font-size: 1.1rem;
+.dica-card h3 {
+  margin: 0 0 6px;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--text-primary);
 }
 
-.dica p {
+.dica-card p {
   margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #cbd5e1;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
 }
 
 footer {
   text-align: center;
-  font-size: 0.95rem;
-  color: #94a3b8;
-  font-weight: 600;
-  padding-top: 10px;
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  padding-top: 8px;
 }
 
-/* Efeito de Clique Ripple */
-.ripple {
-  position: relative;
-  overflow: hidden;
-}
-
-.ripple-effect {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  transform: scale(0);
-  animation: ripple-animation 0.6s linear;
-  pointer-events: none;
-}
-
-@keyframes ripple-animation {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
-
-@media (max-width: 600px) {
-  body { padding: 20px 12px; }
-  main { gap: 20px; }
-  .header-hero { padding: 28px 18px; }
+@media (max-width: 640px) {
+  body { padding: 24px 12px; }
+  .anos-grid { grid-template-columns: 1fr; }
+  .header-banner { padding: 24px 20px; }
+  .card-ano { padding: 20px; }
 }
 </style>
 </head>
 <body>
 
 <main>
-  <header class="header-hero">
-    <h1>✏️ Hora de se preparar!</h1>
-    <p>Acesse o material atualizado e treine para a prova do SARESP.</p>
+  <!-- Banner Principal -->
+  <header class="header-banner">
+    <span class="badge-portal">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      Material Oficial
+    </span>
+    <h1>Simulado SARESP</h1>
+    <p>Selecione seu ano escolar abaixo para acessar os Cadernos de Prova em formato PDF.</p>
   </header>
 
-  <section class="anos" aria-label="Simulados por ano">
-    <div class="ano">
-      <h2>🎒 1º Ano do Ensino Médio</h2>
-      <a class="ripple" href="https://drive.google.com/file/d/1L9n6vhIH7vvjkxAQwDWHxlFgvwls9V8k/view?usp=sharing" target="_blank" rel="noopener noreferrer">Simulado 1º Ano – 1º Dia</a>
-      <a class="ripple" href="https://drive.google.com/file/d/1CHDHnVst9uowMcy7jakTXvz_kTkJZRoO/view?usp=sharing" target="_blank" rel="noopener noreferrer">Simulado 1º Ano – 2º Dia</a>
+  <!-- Lista de Simulados por Ano -->
+  <section class="anos-grid" aria-label="Simulados por ano escolar">
+    
+    <!-- 1º Ano -->
+    <div class="card-ano">
+      <div class="card-ano-header">
+        <h2>🎒 1º Ano E.M.</h2>
+        <span class="tag-disciplinas">Cadernos 1 e 2</span>
+      </div>
+
+      <a class="simulado-link" href="https://drive.google.com/file/d/1L9n6vhIH7vvjkxAQwDWHxlFgvwls9V8k/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <div class="simulado-link-content">
+          <div class="simulado-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="simulado-info">
+            <span class="simulado-title">Simulado – 1º Dia</span>
+            <span class="simulado-sub">Arquivo PDF no Google Drive</span>
+          </div>
+        </div>
+        <span class="simulado-action">
+          Abrir ➔
+        </span>
+      </a>
+
+      <a class="simulado-link" href="https://drive.google.com/file/d/1CHDHnVst9uowMcy7jakTXvz_kTkJZRoO/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <div class="simulado-link-content">
+          <div class="simulado-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="simulado-info">
+            <span class="simulado-title">Simulado – 2º Dia</span>
+            <span class="simulado-sub">Arquivo PDF no Google Drive</span>
+          </div>
+        </div>
+        <span class="simulado-action">
+          Abrir ➔
+        </span>
+      </a>
     </div>
     
-    <div class="ano">
-      <h2>📚 2º Ano do Ensino Médio</h2>
-      <a class="ripple" href="https://drive.google.com/file/d/1dJPA_vBsCRTXJZZPp2M11PMYR6_TMWIt/view?usp=sharing" target="_blank" rel="noopener noreferrer">Simulado 2º Ano – 1º Dia</a>
-      <a class="ripple" href="https://drive.google.com/file/d/1lcqM6Hptn92CSNIQctwHyZvf9hxmuoQ9/view?usp=sharing" target="_blank" rel="noopener noreferrer">Simulado 2º Ano – 2º Dia</a>
+    <!-- 2º Ano -->
+    <div class="card-ano">
+      <div class="card-ano-header">
+        <h2>📚 2º Ano E.M.</h2>
+        <span class="tag-disciplinas">Cadernos 1 e 2</span>
+      </div>
+
+      <a class="simulado-link" href="https://drive.google.com/file/d/1dJPA_vBsCRTXJZZPp2M11PMYR6_TMWIt/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <div class="simulado-link-content">
+          <div class="simulado-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="simulado-info">
+            <span class="simulado-title">Simulado – 1º Dia</span>
+            <span class="simulado-sub">Arquivo PDF no Google Drive</span>
+          </div>
+        </div>
+        <span class="simulado-action">
+          Abrir ➔
+        </span>
+      </a>
+
+      <a class="simulado-link" href="https://drive.google.com/file/d/1lcqM6Hptn92CSNIQctwHyZvf9hxmuoQ9/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <div class="simulado-link-content">
+          <div class="simulado-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="simulado-info">
+            <span class="simulado-title">Simulado – 2º Dia</span>
+            <span class="simulado-sub">Arquivo PDF no Google Drive</span>
+          </div>
+        </div>
+        <span class="simulado-action">
+          Abrir ➔
+        </span>
+      </a>
+    </div>
+
+  </section>
+
+  <!-- Dicas Úteis -->
+  <section class="dicas-container" aria-label="Recomendações de prova">
+    <div class="dicas-header">
+      💡 Orientações Importantes
+    </div>
+    <div class="dicas-grid">
+      <div class="dica-card">
+        <h3>Leitura Atenta</h3>
+        <p>Examine todas as alternativas com calma antes de assinalar a resposta final.</p>
+      </div>
+      <div class="dica-card">
+        <h3>Gestão do Tempo</h3>
+        <p>Avançe nas questões de resolução simples e retorne às mais complexas depois.</p>
+      </div>
+      <div class="dica-card">
+        <h3>Revisão Final</h3>
+        <p>Confera com atenção o preenchimento da folha de respostas antes de concluir.</p>
+      </div>
     </div>
   </section>
 
-  <section class="dicas" aria-label="Dicas de estudo">
-    <div class="dica">
-      <h2>📖 Leia com atenção</h2>
-      <p>Analise cada enunciado e alternativa com atenção antes de responder.</p>
-    </div>
-    <div class="dica">
-      <h2>⏰ Gerencie seu tempo</h2>
-      <p>Se travar em uma questão difícil, pule-a e retorne ao final da prova.</p>
-    </div>
-    <div class="dica">
-      <h2>🔍 Faça uma revisão</h2>
-      <p>Reserve os minutos finais para conferir o cartão de respostas.</p>
-    </div>
-  </section>
-
-  <footer>🚀 Bons estudos e excelente desempenho!</footer>
+  <footer>
+    Desejamos uma ótima preparação e um excelente desempenho nas avaliações.
+  </footer>
 </main>
-
-<script>
-// Script interativo para efeito Ripple (ondulação) nos botões
-document.querySelectorAll('.ripple').forEach(button => {
-  button.addEventListener('click', function (e) {
-    const circle = document.createElement('span');
-    const diameter = Math.max(this.clientWidth, this.clientHeight);
-    const radius = diameter / 2;
-
-    const rect = this.getBoundingClientRect();
-    circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${e.clientX - rect.left - radius}px`;
-    circle.style.top = `${e.clientY - rect.top - radius}px`;
-    circle.classList.add('ripple-effect');
-
-    const ripple = this.getElementsByClassName('ripple-effect')[0];
-    if (ripple) {
-      ripple.remove();
-    }
-
-    this.appendChild(circle);
-  });
-});
-</script>
 
 </body>
 </html>
