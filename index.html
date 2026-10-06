@@ -51,6 +51,16 @@ main{max-width:860px; margin:0 auto; padding:28px 20px 56px 76px}
 .destaque .sub{display:block; margin-top:8px; font-size:1.05rem; font-weight:600}
 @keyframes pulso{0%,100%{box-shadow:8px 8px 0 #1b1b1b}50%{box-shadow:8px 8px 0 #1b1b1b,0 0 0 10px rgba(255,210,63,.45)}}
 
+.anos{margin-top:40px; display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.ano{background:var(--paper); border:3px solid var(--board); border-radius:12px; padding:18px; box-shadow:5px 5px 0 var(--board)}
+.ano h2{margin:0 0 12px; font-size:1.25rem}
+.ano a{
+  display:block; margin-top:10px; padding:14px 16px; text-decoration:none; font-weight:700;
+  color:var(--chalk); background:var(--board); border-radius:8px; border:2px solid var(--board-dark);
+  transition:transform .15s, background .15s;
+}
+.ano a:hover,.ano a:focus-visible{background:var(--board-dark); transform:translateY(-2px)}
+.ano a:focus-visible{outline:3px solid var(--red); outline-offset:2px}
 .dicas{margin-top:44px; display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
 .dica{background:var(--paper); border:2px dashed var(--board); border-radius:10px; padding:16px 18px}
 .dica h2{margin:0 0 6px; font-size:1.05rem}
@@ -77,6 +87,19 @@ footer{margin-top:40px; text-align:center; font-size:.9rem; opacity:.75}
     <span class="titulo">SIMULADO SARESP</span>
     <span class="sub">Clique aqui para abrir o simulado</span>
   </a>
+
+  <section class="anos" aria-label="Simulados por ano">
+    <div class="ano">
+      <h2>🎒 1º Ano</h2>
+      <a href="https://drive.google.com/file/d/1L9n6vhIH7vvjkxAQwDWHxlFgvwls9V8k/view?usp=sharing" target="_blank" rel="noopener noreferrer">Simulado 1º Ano – primeiro dia</a>
+      <a href="https://drive.google.com/file/d/1CHDHnVst9uowMcy7jakTXvz_kTkJZRoO/view?usp=sharing" target="_blank" rel="noopener noreferrer">Simulado 1º Ano – segundo dia</a>
+    </div>
+    <div class="ano">
+      <h2>📚 2º Ano</h2>
+      <a href="https://drive.google.com/file/d/1dJPA_vBsCRTXJZZPp2M11PMYR6_TMWIt/view?usp=sharing" target="_blank" rel="noopener noreferrer">Simulado 2º Ano – primeiro dia</a>
+      <a href="https://drive.google.com/file/d/1lcqM6Hptn92CSNIQctwHyZvf9hxmuoQ9/view?usp=sharing" target="_blank" rel="noopener noreferrer">Simulado 2º Ano – segundo dia</a>
+    </div>
+  </section>
 
   <section class="dicas" aria-label="Dicas de estudo">
     <div class="dica"><h2>📖 Leia com calma</h2><p>Leia cada enunciado até o fim antes de marcar a resposta.</p></div>
